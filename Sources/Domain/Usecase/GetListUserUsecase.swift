@@ -11,7 +11,7 @@ import Data
 
 public protocol GetListUserUsecase {
     
-    func getListUser(perPage: Int, since: Int) -> AnyPublisher<Result<[User], NetworkRequestError>, Never>
+    func getListUser(perPage: Int, since: Int) -> AnyPublisher<Result<[User], APIError>, Never>
 }
 
 public class GetListUserUsecaseImpl: GetListUserUsecase {
@@ -22,7 +22,7 @@ public class GetListUserUsecaseImpl: GetListUserUsecase {
         self.repository = repository
     }
     
-    public func getListUser(perPage: Int, since: Int) -> AnyPublisher<Result<[User], NetworkRequestError>, Never> {
+    public func getListUser(perPage: Int, since: Int) -> AnyPublisher<Result<[User], APIError>, Never> {
         repository.getListUser(param: .init(perPage: perPage, since: since))
             .autoDecode()
     }

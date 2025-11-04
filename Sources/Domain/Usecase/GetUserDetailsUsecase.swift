@@ -11,7 +11,7 @@ import Data
 
 public protocol GetUserDetailsUsecase {
     
-    func getUserDetails(username: String) -> AnyPublisher<Result<UserDetails, NetworkRequestError>, Never>
+    func getUserDetails(username: String) -> AnyPublisher<Result<UserDetails, APIError>, Never>
 }
 
 public class GetUserDetailsUsecaseImpl: GetUserDetailsUsecase {
@@ -22,7 +22,7 @@ public class GetUserDetailsUsecaseImpl: GetUserDetailsUsecase {
         self.repository = repository
     }
     
-    public func getUserDetails(username: String) -> AnyPublisher<Result<UserDetails, NetworkRequestError>, Never> {
+    public func getUserDetails(username: String) -> AnyPublisher<Result<UserDetails, APIError>, Never> {
         repository.getUserDetails(param: .init(username: username))
             .autoDecode()
     }
