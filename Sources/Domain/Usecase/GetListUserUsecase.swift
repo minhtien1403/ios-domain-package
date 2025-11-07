@@ -18,7 +18,7 @@ public class GetListUserUsecaseImpl: GetListUserUsecase {
     
     private let repository: UserRepository
     
-    public init(repository: UserRepository) {
+    public init(repository: UserRepository = UserRepositoryImpl()) {
         self.repository = repository
     }
     

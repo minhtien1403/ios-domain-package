@@ -18,7 +18,7 @@ public class GetUserDetailsUsecaseImpl: GetUserDetailsUsecase {
     
     private let repository: UserRepository
     
-    public init(repository: UserRepository) {
+    public init(repository: UserRepository = UserRepositoryImpl()) {
         self.repository = repository
     }
     
