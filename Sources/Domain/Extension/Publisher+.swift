@@ -7,12 +7,8 @@
 
 import Foundation
 import Combine
-import Data
-import Shared
 
-import Combine
-
-extension Publisher where Output == Result<Data, NetworkRequestError>, Failure == Never {
+extension Publisher where Output == Result<Data, APIError>, Failure == Never {
     func autoDecode<T: Decodable>(
         decoder: JSONDecoder = JSONDecoder()
     ) -> AnyPublisher<Result<T, APIError>, Never> {
@@ -25,8 +21,8 @@ extension Publisher where Output == Result<Data, NetworkRequestError>, Failure =
                 } catch {
                     return .failure(.decodingError(error.localizedDescription))
                 }
-            case .failure(let networkError):
-                return .failure(APIError(from: networkError))
+            case .failure(let apiError):
+                return .failure(apiError)
             }
         }
         .eraseToAnyPublisher()

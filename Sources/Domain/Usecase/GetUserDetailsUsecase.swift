@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import Data
 
 //public protocol GetUserDetailsUsecase {
 //    

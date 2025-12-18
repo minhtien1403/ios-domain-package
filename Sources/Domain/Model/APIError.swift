@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Data
 
 public enum APIError: LocalizedError, Equatable {
     
@@ -51,38 +50,5 @@ public enum APIError: LocalizedError, Equatable {
 extension APIError: Identifiable {
     public var id: String {
         UUID().uuidString
-    }
-}
-
-extension APIError {
-    init(from networkError: NetworkRequestError) {
-        switch networkError {
-        case .invalidRequest:
-            self = .invalidRequest
-        case .noInternet:
-            self = .noInternet
-        case .badRequest:
-            self = .badRequest
-        case .unauthorized:
-            self = .unauthorized
-        case .forbidden:
-            self = .forbidden
-        case .notFound:
-            self = .notFound
-        case .error4xx(let code):
-            self = .error4xx(code)
-        case .serverError:
-            self = .serverError
-        case .error5xx(let code):
-            self = .error5xx(code)
-        case .decodingError(let desc):
-            self = .decodingError(desc)
-        case .urlSessionFailed(let err):
-            self = .urlSessionFailed(err)
-        case .timeOut:
-            self = .timeOut
-        case .unknownError:
-            self = .unknownError
-        }
     }
 }
