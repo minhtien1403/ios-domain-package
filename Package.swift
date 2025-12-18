@@ -15,17 +15,11 @@ let package = Package(
         ),
     ],
     dependencies: [
-        // Remote Shared Package
-        .package(
-            url: "https://github.com/minhtien1403/ios-data-package",
-            branch: "master"
-        )
     ],
     targets: [
         .target(
             name: "Domain",
             dependencies: [
-                .product(name: "Data", package: "ios-data-package")
             ],
             path: "Sources/Domain"
         ),
