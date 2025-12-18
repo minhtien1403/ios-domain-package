@@ -9,21 +9,21 @@ import Foundation
 import Combine
 import Data
 
-public protocol GetUserDetailsUsecase {
-    
-    func getUserDetails(username: String) -> AnyPublisher<Result<UserDetails, APIError>, Never>
-}
-
-public class GetUserDetailsUsecaseImpl: GetUserDetailsUsecase {
-    
-    private let repository: UserRepository
-    
-    public init(repository: UserRepository = UserRepositoryImpl()) {
-        self.repository = repository
-    }
-    
-    public func getUserDetails(username: String) -> AnyPublisher<Result<UserDetails, APIError>, Never> {
-        repository.getUserDetails(param: .init(username: username))
-            .autoDecode()
-    }
-}
+//public protocol GetUserDetailsUsecase {
+//    
+//    func getUserDetails(username: String) -> AnyPublisher<Result<UserDetails, APIError>, Never>
+//}
+//
+//public class GetUserDetailsUsecaseImpl: GetUserDetailsUsecase {
+//    
+//    private let repository: UserRepository
+//    
+//    public init(repository: UserRepository = UserRepositoryImpl()) {
+//        self.repository = repository
+//    }
+//    
+//    public func getUserDetails(username: String) -> AnyPublisher<Result<UserDetails, APIError>, Never> {
+//        repository.getUserDetails(param: .init(username: username))
+//            .autoDecode()
+//    }
+//}
